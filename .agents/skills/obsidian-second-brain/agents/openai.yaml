@@ -1,0 +1,4 @@
+interface:
+  display_name: "Obsidian Second Brain"
+  short_description: "Obsidian vault workflows for Codex"
+  default_prompt: "Use $obsidian-second-brain to manage and update Obsidian vault notes with the second-brain workflow."

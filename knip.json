@@ -1,0 +1,12 @@
+{
+  "$schema": "https://unpkg.com/knip/schema.json",
+  "entry": ["scripts/*.mjs"],
+  "ignoreDependencies": [
+    "@semantic-release/commit-analyzer",
+    "@semantic-release/github",
+    "@semantic-release/npm",
+    "@semantic-release/release-notes-generator",
+    "conventional-changelog-conventionalcommits"
+  ],
+  "project": ["src/**/*.{ts,tsx,css}", "scripts/**/*.mjs", "*.{ts,mjs}"]
+}

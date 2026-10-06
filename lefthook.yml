@@ -1,0 +1,19 @@
+pre-commit:
+  parallel: false
+  commands:
+    format:
+      priority: 1
+      glob: "*.{js,jsx,ts,tsx,mjs,cjs,mts,cts,json,jsonc,yml,yaml,css,md,mdx}"
+      exclude: '(^|/)(node_modules|\.next|\.obsidian)/|^\.agents/skills/|^pnpm-lock\.yaml$'
+      run: node scripts/format-staged.mjs {staged_files}
+      stage_fixed: true
+    lint:
+      priority: 2
+      glob: "*.{js,jsx,ts,tsx,mjs,cjs,mts,cts}"
+      exclude: '^\.agents/skills/'
+      run: pnpm exec oxlint --max-warnings=0 {staged_files}
+
+commit-msg:
+  commands:
+    conventional:
+      run: pnpm exec commitlint --edit {1}
