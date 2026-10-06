@@ -1,10 +1,7 @@
 import type { MetadataRoute } from "next"
 import { site } from "@/lib/site"
+import { createSitemap } from "@/lib/seo"
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  if (!site.indexable) return []
-
-  return ["/"].map((pathname) => ({
-    url: new URL(pathname, site.url).toString(),
-  }))
+  return createSitemap(site)
 }

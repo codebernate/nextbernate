@@ -2,6 +2,7 @@
 
 import * as React from "react"
 import { ThemeProvider as NextThemesProvider, useTheme } from "next-themes"
+import { nextThemeForShortcut } from "@/lib/theme-keyboard"
 
 function ThemeProvider({
   children,
@@ -35,35 +36,25 @@ function isTypingTarget(target: EventTarget | null) {
 }
 
 function ThemeHotkey() {
-  const { resolvedTheme, setTheme } = useTheme()
+  const { setTheme } = useTheme()
 
   React.useEffect(() => {
     function onKeyDown(event: KeyboardEvent) {
-      if (event.defaultPrevented || event.repeat) {
-        return
-      }
+      const nextTheme = nextThemeForShortcut(
+        event,
+        document.documentElement.classList.contains("dark"),
+        isTypingTarget(document.activeElement)
+      )
 
-      if (event.metaKey || event.ctrlKey || event.altKey) {
-        return
-      }
-
-      if (event.key.toLowerCase() !== "d") {
-        return
-      }
-
-      if (isTypingTarget(event.target)) {
-        return
-      }
-
-      setTheme(resolvedTheme === "dark" ? "light" : "dark")
+      if (nextTheme) setTheme(nextTheme)
     }
 
-    window.addEventListener("keydown", onKeyDown)
+    document.addEventListener("keydown", onKeyDown, true)
 
     return () => {
-      window.removeEventListener("keydown", onKeyDown)
+      document.removeEventListener("keydown", onKeyDown, true)
     }
-  }, [resolvedTheme, setTheme])
+  }, [setTheme])
 
   return null
 }

@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
 import { site } from "@/lib/site"
+import { createPageMetadata } from "@/lib/seo"
 
 export const rootMetadata: Metadata = {
   metadataBase: new URL(site.url),
@@ -17,33 +18,5 @@ export function pageMetadata({
   title?: string
   description?: string
 }): Metadata {
-  const canonical = new URL(pathname, site.url).toString()
-  const socialTitle = title ? `${title} | ${site.name}` : site.name
-  const image = {
-    url: new URL(site.socialImage, site.url).toString(),
-    width: 1200,
-    height: 630,
-    alt: site.name,
-  }
-
-  return {
-    ...(title ? { title } : {}),
-    description,
-    alternates: { canonical },
-    openGraph: {
-      type: "website",
-      locale: site.locale,
-      siteName: site.name,
-      title: socialTitle,
-      description,
-      url: canonical,
-      images: [image],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: socialTitle,
-      description,
-      images: [image.url],
-    },
-  }
+  return createPageMetadata(site, { pathname, title, description })
 }
