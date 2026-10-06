@@ -1,4 +1,4 @@
-export default {
+const releaseConfig = {
   branches: ["main"],
   tagFormat: "v${version}",
   plugins: [
@@ -29,3 +29,5 @@ export default {
     ],
   ],
 }
+
+export default releaseConfig
