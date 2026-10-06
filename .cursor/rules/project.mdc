@@ -1,0 +1,7 @@
+---
+description: Shared project workflow and knowledge entry point
+alwaysApply: true
+---
+
+Read and follow [AGENTS.md](../../AGENTS.md) from the repository root.
+Project conventions and skill routing are defined there; do not duplicate them here.

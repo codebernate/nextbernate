@@ -1,3 +1,19 @@
+# Project workflow
+
+Use the runtime and package manager declared in `.node-version` and `package.json`.
+
+Before changing code, read `knowledge/index.md` and the notes relevant to the task.
+Run `pnpm check` before reporting an implementation complete. Report any failed or blocked check with its cause.
+Use Conventional Commits. PR titles become squash commit subjects.
+Preserve user changes and partial staging. Do not disable checks to conceal failures.
+
+For knowledge work, read `.agents/skills/obsidian-second-brain/SKILL.md` and use `knowledge/` as the vault root.
+Update relevant existing notes when accepted decisions or actual code changes affect them.
+Do not create a session log for every small change.
+
+Naming and decomposition guidance lives in `knowledge/conventions/code-organization.md`.
+These are contextual guidelines; phase 1 does not add mechanical architecture or naming gates.
+
 <!-- BEGIN:nextjs-agent-rules -->
 
 # This is NOT the Next.js you know
