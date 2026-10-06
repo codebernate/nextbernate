@@ -13,6 +13,7 @@
     "format:check": "oxfmt --check .",
     "typecheck": "next typegen && tsc --noEmit",
     "knip": "knip",
+    "check": "pnpm format:check && pnpm lint && pnpm lint:eslint && pnpm typecheck && pnpm knip && pnpm build",
     "prepare": "node scripts/install-hooks.mjs",
     "commit": "cz",
     "ui:add": "shadcn add"

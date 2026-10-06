@@ -1,21 +1,23 @@
-# Next.js template
+# Nextbernate
 
-This is a Next.js template with shadcn/ui.
+Nextbernate is a personal Next.js boilerplate with TypeScript, Tailwind, shadcn/ui, and a layered quality workflow.
 
-## Adding components
-
-To add components to your app, run the following command:
+Use the Node version from `.node-version` and pnpm version declared in `package.json`.
 
 ```bash
-npx shadcn@latest add button
+pnpm install --frozen-lockfile
+pnpm dev
 ```
 
-This will place the ui components in the `components` directory.
+## Checks
 
-## Using components
+- `pnpm format` applies Oxfmt.
+- `pnpm lint` runs Oxlint for fast feedback.
+- `pnpm lint:eslint` runs complementary ESLint rules.
+- `pnpm typecheck` generates Next.js route types and runs TypeScript.
+- `pnpm knip` finds unused files, exports, and dependencies.
+- `pnpm check` runs every quality check and production build.
 
-To use the components in your app, import them as follows:
+Use `pnpm commit` for the optional Commitizen wizard. Lefthook formats and lints staged files, and commitlint validates Conventional Commit messages. When a file is partially staged, verify the unstaged hunk stays in your working tree after committing.
 
-```tsx
-import { Button } from "@/components/ui/button"
-```
+Use `pnpm ui:add <component>` to add a shadcn component only when the application needs it.
