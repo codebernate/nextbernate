@@ -15,6 +15,8 @@ Use the Node version in `.node-version` and pnpm version in `package.json`.
 
 Rule ownership: Oxlint enforces `no-debugger` and React hook rules quickly; ESLint supplies rules Oxlint does not cover, including `@typescript-eslint/no-explicit-any`.
 
+Knip ignores five semantic-release plugins because `release.config.mjs` resolves them by string: commit-analyzer, GitHub, npm, release-notes-generator, and conventional-changelog-conventionalcommits. They are runtime release configuration, not unused packages.
+
 PR titles become squash commit subjects. `fix` releases a patch, `feat` a minor, and `!` or a breaking-change footer a major. semantic-release updates package version and changelog after checked `main` commits; npm publishing is disabled. Dependabot opens weekly grouped PRs without auto-merge.
 
 Reproduce CI failures locally. Do not disable checks to make a change pass. See [[conventions/knowledge-workflow]].
